@@ -1,14 +1,23 @@
 \documentclass[10pt,a4paper]{report}
 \usepackage[latin1]{inputenc}
+\usepackage{makeidx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \author{David Diks, Guus Hamm}
 \title{Stage: AppSemble}
+\makeindex
 \begin{document}
+	\maketitle
 	
+	\tableofcontents
+	\newpage
+
 	\input{chapters/one.tex}
 	
+	\newpage
+	\chapter{Appendix}
+	\newpage
 	\input{appendix/logbook.tex}
 \end{document}
