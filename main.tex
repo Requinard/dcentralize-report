@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{appendix}
 \author{David Diks, Guus Hamm}
 \title{Stage: AppSemble}
 \makeindex
@@ -17,7 +18,8 @@
 	\input{chapters/one.tex}
 	
 	\newpage
-	\chapter{Appendix}
-	\newpage
-	\input{appendix/logbook.tex}
+	\begin{appendices}
+		\input{appendix/logbook.tex}
+	\end{appendices}
+	
 \end{document}
