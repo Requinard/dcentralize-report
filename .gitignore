@@ -1,4 +1,7 @@
 *.pdf
+*.lof
 *.aux
 *.log
 *.gz
+*.toc
+*.idx
