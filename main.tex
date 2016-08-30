@@ -5,21 +5,35 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\author{David Diks, Guus Hamm}
+\usepackage{titling}
+\author{David Diks}
 \title{Stage: AppSemble}
+\date{27-01-2017}
 \makeindex
+
+
 \begin{document}
 	% Front page
-
 	\frontmatter
-	\maketitle
+	\begin{titlepage}
+		\centering
 
-	% introduction, thanks and more
-	\input{titlepage.tex}
-	\input{chapters/introduction.tex}
+		{\bfseries\Huge
+			\thetitle
+			\vskip1.5cm
+			\Large
+			\theauthor
+			\vskip1cm
+			\thedate
+			\vskip1cm
+			\includegraphics*[width=250px]{figures/logo.jpg}
+			}
+	\end{titlepage}
+
+	\input{preface/introduction.tex}
+	\input{preface/words.tex}
 	
 	\tableofcontents
-	\newpage
 	
 	\mainmatter
 
