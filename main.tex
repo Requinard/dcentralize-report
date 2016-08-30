@@ -25,29 +25,31 @@
 			\theauthor
 			\vskip1cm
 			\thedate
-			\vskip1cm
+			\vskip2cm
 			\includegraphics*[width=250px]{figures/logo.jpg}
 			}
 	\end{titlepage}
 
-	\input{preface/introduction.tex}
+	% BEGIN PREFACE
+	\input{preface/foreword.tex}
 	\input{preface/words.tex}
 	
 	\tableofcontents
 	
+	% END PREFACE
+	
 	\mainmatter
 
-	% Main chapters
-	\pagenumbering{arabic}
+	% BEGIN MAIN
 	\input{chapters/one.tex}
 	
-	\newpage
+	% END MAIN
 	
-	\pagenumbering{Alph}
-	% Appendix
+	% BEGIN APPENDIX
+	
 	\appendix
 	\input{appendix/logbook.tex}
 	\input{appendix/figures.tex}
 
-	
+	% END APPENDIX
 \end{document}
