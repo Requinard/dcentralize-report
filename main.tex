@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{book}
+\documentclass[10pt,a4paper]{scrreprt}
 \usepackage[latin1]{inputenc}
 \usepackage{makeidx}
 \usepackage{amsmath}
@@ -14,7 +14,6 @@
 
 \begin{document}
 	% Front page
-	\frontmatter
 	\begin{titlepage}
 		\centering
 
@@ -42,16 +41,19 @@
 	
 	% END PREFACE
 	
-	\mainmatter
 
 	% BEGIN MAIN
 	\input{chapters/dcentralize.tex}
-	
+	\input{chapters/assignment.tex}
+	% more chapters when needed
+	\input{chapters/conclusions.tex}
+	\input{chapters/evaluation.tex}
 	% END MAIN
 	
 	% BEGIN APPENDIX
 	
 	\appendix
+	\input{appendix/citations.tex}
 	\input{appendix/logbook.tex}
 	\input{appendix/figures.tex}
 
