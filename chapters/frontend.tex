@@ -1,0 +1,60 @@
+\chapter{Developer Libraries}
+
+Alhoewel het bijzonder leuk is om een complete aanspreekbare API te hebben, is dit niet adequaat als eindproduct. Een gebruiker kan zou de documentatie niet kunnen vinden, heeft geen beschikbare libraries om hiermee te praten of heeft uberhaupt geen zin om met de api te werken. \\
+
+Hiervoor is het handig om een development library te ontwikkelen. Deze library is een plugintool gemaakt om vanuit een appsemble extension te praten met de appsemble api, zonder dat de developer ooit een network request hoeft te doen. De library wrapt alle beschikbare api's i een mooi bestandje met functies, om vervolgens deze aant bieden aan de gebruiker. \\ 
+
+Dit heeft de volgende voordelen.
+
+\begin{itemize}
+	\item De api is te gebruiken zonder documentatie te raadplegen
+	\item Er kan een standaard communicatieprotocol afgesproken worden
+	\item Een developer kan gestopt worden voordat hij/zij iets stoms probeert te doen
+\end{itemize}
+
+Er zijn echter wel een paar nadelen aan.
+
+\begin{itemize}
+	\item Extra documentatie, aangezien de library gedocumenteerd moet worden
+	\item Extra laag abstractie die een developer misschien niet eens zou willen
+	\item Dubbel bijhouden van development, door zowel de backend als de frontend te onderhouden.
+\end{itemize}
+
+Al met al is dit echter wel een heel handig klein projectje die veel tijd kan besparen bij het ontwikkelen van een appsemble extension, wat uiteindelijk het doel is van de sdk. \\
+
+\section{Opzet en Requirements}
+
+De libraries moeten worden gebruikt in de browser. Dit betekent dat er enkel gekeken kan worden naar javascript en zijn supertypes. Aangezien de library een wrapper is voor de api, zal deze geen echte complexiteit af te handelen. Dit betekent dat het gebruiken van een grote superset onbegonnen werk is. Om te zorgen dat de library wel up to dat is zal hij geschreven worden  in ES6, de nieuwe standaard. \\
+
+Daarnaast heeft het de volgende requirements:
+
+\begin{itemize}
+	\item Importeerbaar door alle versies van javascript
+	\item Simpel in gebruik, geen uitgebreide documentatie nodig
+	\item Werk met promise chaining om leesbare code te schrijven
+	\item Verspreid de library via npm
+\end{itemize}
+
+Om dit te bewerkstelligen is gekozen voor een simpele opzet, waarbij de library als package word aangemaakt bij npm. De code word geschreven in ES6 en compiled naar ES4/5 voor backwards compatibility. De code word automatisch gelint en getest.
+
+\section{Interactie van library naar api}
+
+Om te zorgen dat de library en de api goed met elkaar kunnen praten moet er een bepaald soort interactie zijn. De library doet dit als volgt. \\
+
+Op het oppervlak presenteert de library een aantal functies. Deze zitten verpakt in bestanden, genoemd naar het gedeelte van de api die zij aanspreken. In een bestand zit een functie voor iedere api request die er gedaan kan worden, zodat de volle api gebruikt kan worden. \\ 
+
+Deze functies formatteren de inkomende data en vertalen dit naar een object dat de api kan begrijpen. Deze word doorgestuurd met de `makeRPC` functie. Deze verbindt de data aan een id, slaat deze op een stuurt de data door. Hij geeft vervolgens een promise terug, die de library dan weer teruggeeft aan de gebruiken. Vanwege het meegestuurde id, kunnen wij bij een antwoord weten welke promise vervuld moet worden. Dit zorgt ervoor dat wij een hele hoop api requests apart in een non-blocking loop apart af kunnen handelen en aparte waardes hiermee terug kunnen geven. \\
+
+\section{Voorgekomen problemen}
+
+\subsection{Integratie met het live systeem}
+
+Alhoewel het schrijven van de afzonderlijke code en het testen hiervan geen probleem was, bleek dat het uiteindelijke integreren een stuk moeilijker zou zijn. De message event bindings bleken onduidelijk gedocumenteerd te zijn en kwamen niet goed door. \\
+
+Daarnaast was er een verschil in payload-data tussen de twee verschillende systemen. Dit kwam vooral doordat de systemen apart ontwikkeld waren, waardoor de impliciete details een beetje verwaterd waren. \\
+
+Dit zorgde ervoor dat het nog even kon duren voordat de library voor het eerst aan de gang kwam.
+
+
+
+	

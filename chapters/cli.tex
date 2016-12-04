@@ -1,0 +1,31 @@
+\chapter{Command Line Interface}
+
+Tot nu toe is software besproken waar gebruikers extensies mee kunnen maken. Echter is het bouwen maar een van de stappen in het ontwikkelprocess. Iedere extension zal uiteindelijk ook beschikbaar moeten worden gemaakt voor ontwikkelaars. \\
+
+In de oude versie van appsemble was het niet eens mogelijk voor externe developers om extensions te schrijven. Dit zat vastgebakt in de appsemble-core. Dit was echter geen mooie oplossing, waardoor er in de nieuwe versie van appsemble wel support in zit. \\
+
+Vooralsnog werd deze api aangesproken via een algemeen python script, wat de uploads coverde. Het grote probleem met deze oplossing was echter dat it script enkel bruikbaar was voor d-centralize developers, en niet gemakkelijk te verspreiden was zonder veel van de innerlijke werking te openbaren. \\
+
+De keuze is toen gemaakt dat deze scripts naar een apart programma werden verplaats, de appsemble cli\footnote{Command Line Interface}. Dit tooltje moet helpen bij het ontwikkelen van een appsemble extension, en automatiseert enkele taken zoals;
+
+\begin{itemize}
+	\item Initaliseren van een project
+	\item Development versie van het project weergeven
+	\item Extension bouwen en uploaden naar appsemble
+\end{itemize}
+
+Al met al kan dit samengevat worden als de basiscyclus van development. Vanaf start tot eind moet worden opgevangen met een enkel tooltje, die de bestaande complexiteit als uploaden afhandelt.
+
+\section{Aanpak}
+
+De cli wordt, net zoals de andere onderdelen, geschreven in javascript. Deze wordt gedraaid door Nodejs, een javascript virtual machine voor javascript uit te voeren zonder een browser te gebruiken. \\
+
+Dit zorgt ervoor dat wij de grote verscheidenheid van het javascript ecosysteem kunnen gebruiken. Het bied ons ook dezelfde libraries en interfaces zoals die gebruikt worden bij de front-end libraries. \\ 
+
+De tool word uiteindelijk lokaal met de hand getest, aangezien veel van de functies moeilijk of niet te testen zijn, vanwege I/O interactie of het slecht stubben van objecten. \\
+
+Als eerste was de uploader geschreven. Dit was enkel een simpele eenwegsvertaling van python naar javascript. In de realiteit bleek het een stuk complexer te zijn, vanwege de nodejs representatie van binary blobs en bestanden. \\ 
+
+Vervolgens is de init geschreven, als een korte proof of concept voor de upload functie. Deze was zeer simpel om te schrijven, sinds het enkel commando-input neemt en hiermee een pakketje opzet. \\
+
+% TODO :Build tool sectie afmaken

@@ -1,1 +1,21 @@
-\chapter{The Assignment}
+\chapter{De Opdracht}
+
+De eerste versie van appsemble is closed-source. Dit betekende dat alle ondersteuning voor het maken van applicaties kwam uit d-centralize zelf. Dit betekende dat iemand die samen met appsemble iets wil ontwikkelen dit niet kan doen. \\
+
+Echter word de het hele framework herschreven naar angular2. Dit betekent dat en een gehele refactor kan gebeuren. Dit betekent dat we de interface hetzelfde laten, maar de back-end veranderen.\\
+
+Dit betekent dat de lessen van de eerste poging toegepast kunnen worden op de nieuwe versie. Naast een paar utibreidingen en het open sourcen van de applicatie, word er ook gewerkt aan de uitbreidbaarheid van appsemble.\\
+
+Hierin is het doel dat in de toekomst, iedere developer zijn eigen extensies kan ontwikkelen voor de appsemble. Een component kan dan zelf ontwikkeld worden, en gebruit worden door iedereen die een appsemble applicatie wil maken.\\
+
+Hiervoor moet er wel een manier zijn om te interfacen met appsemble. Dit kan gedaan worden door api calls te documenteren. Het is echter een veel betere oplossing om hier een geintegreerde library voor te schrijven, een sdk.\\
+
+Een sdk zorgt ervoor dat alle interne api calls gedaan worden  door middel van functies, in plaats van rauwe api calls. Hiermee kun je gemakkelijk een manier aanbieden om een extension te ontwikkelen. Dit bevordert de bruikbaarheid vna het platform.\\
+
+Hier moeten echter een paar individuele componenten voor ontwikkeld worden. Dit zijn verschillende onderdelen die in verschillende systemen draaien.
+\begin{itemize}
+	\item Back-end api (Accepteert RPC calls)
+	\item Front-end library (Verstuurt RPC calls en wacht op antwoorden)
+	\item Cli tool (Tool om projecten te initialiseren, te bouwen en te uploaden)
+\end{itemize}
+
