@@ -1,0 +1,68 @@
+\chapter{Proces en praktijken}
+
+\section{Code}
+
+\subsection{Unit Testing en Linting}
+
+Bij d-centralize staat code-kwaliteit voorop. Dit betekent dat, voordat iemand anders naar de code kijkt, er al strikte maatstaven gebruikt worden. Dit betekent dat bij d-centralize gebruik word gemaakt van de volgende tests
+
+\begin{itemize}
+	\item Commit message validatie
+	\item Code linting
+	\item Unit tests
+	\item End-To-End integratie tests
+\end{itemize}
+
+Commit message validatie zorgt ervoor dat iedere commit message consistent is. Het dwint regels en formaten af. Hieronder vallen bijvoorbeeld: imperative verbs, formatted first line en width limits. \\
+
+Vervolgens word een stukje code gelint. Dit betekent dat de code statisch gecheckt word voor fouten in codeerstijl. Dit zorgt ervoor dat de code altijd hetzelfde uitziet en leest. \\
+
+Dit word geholpen door EditorConfig, een speciale plugin die zorgt dat je editor standaard aan alle regels voldoet. \\
+
+Dan word de code echt getest. Als eerste zijn de unit tests aan de beurt. Deze tests, geschreven met karma, verifieren dat de code zelf werkt. Externe klasses worden gemockt om modulariteit echt te checken. \\
+
+Om te zorgen dat de unit tests wel ergens voor gebruikt worden, word 100 procent coveage afgedwongen. Dit gaat over alle domeinen, waardoor dus oom anonieme functies getest moeten worden. \\
+
+Als laatste word de ui en integratie getest. Dit gebeurt met de hulp van protractor, die een headless instantie van chrome aandrijft\footnote{Een versie van chrome die geen ui weergeeft en draait in een docker container}. Deze tests checken of de applicatie als geheel dan ook echt werkt.
+
+\subsection{Jenkins}
+
+Jenkins is de automated build server. Zodra er een commit gepushed word naar Gerrit, zal jenkins proberen deze te bouwen en de tests uit te voeren. \\
+
+Jenkins geeft vervolgens aan of de build succcessvol was of niet. Dit geeft aan of alle stappen van het vorige hoofdstuk goed zijn doorlopen. \\
+
+In het geval van fouten zal jenkins een log uitspugen, waar precies in staat wat er allemaal fout is gegaan.
+
+\subsection{Code Reviews}
+
+Uiteindelijk komt dit allemaal samen met een code review, de laatste stap voordat een commit gemerged word. \\
+
+Bij de code review word de code bekeken door een andere developer, met de mogelijkheid om hier commentaar op te geven. Het doel van een code review is om alle fouten af te vangen die geautomatiseerd testen niet heeft kunnen vinden. \\
+
+Daarnaast word een code review gebruikt om te zorgen dat geschreven code van een bepaalde standaard is. Deze worden dus meestal gedaan met de lead developer. \\
+
+Jenkins zegt bij een commit ook altijd of de build een success was of niet. Als jenkins zegt dat de build faalt, mag de code nooit gemerged worden. Dit zorgt ervoor dat de regels van de code nageleefd worden. \\
+
+Indien zowel de reviewer, jenkins en de auteur van de code blij zijn met het resultaat word de code gemerged met de master branch.
+
+\section{Organisatie}
+
+Bij d-centralize word er gewerkt via agile. Het process is echter geheel eigen. Dagelijks zijn er standups, waarbij afgelopen en aankomend werk besproken word. Werk word verdeeld en gediscussieerd via tickets en via praten. Daarnaast word er gebruik gemaakt van slack voor async communicatie. 
+
+\subsection{Big Meetings}
+
+Iedere twee weken, op dinsdag, houdt d-centralize een Big Meeting. Dit is voor scrum gelijk aan een retrospective. Hierin word voor iedereen besproken hoe hun planning is gegaan en wat zij van plan zijn te gaan doen. \\
+
+Daarnaast word hier de tijd genomen om demo's van producten te geven en om feedback te vragen aan andere teams. \\
+
+Het nut van een big meeting komt vooral uit het feit dat iedereen hierdoor weet waar de verschillende teams mee bezig zijn en wat zij willen bereiken.
+
+\subsection{Holacracy}
+
+Holacracy een nieuwe manier van bedrijfsvoering. Op het moment word er bij d-centralize hiermee geexperimenteerd. \\ 
+
+Holacracy is een poging om ervoor te zorgen dat het bedrijf zelfleidend word. Macht word gegeven aan teams, die zelf beslissingen kunnen maken. dit word gefaciliteerd met een proces eromheen, zodat de regels transparant en gemakklijk zijn. \\
+
+Iedere twee weken is er een governance meeting, waarbij bepaalde aspecten van het werk besproken worden. Daarnaast is er iedere week een tactical, waarbij de projecten besproken kunnen worden. \\
+
+Bij d-centralize word ook deze vorm weer aangepast om beter te passen bij het bedrijf. De tacticals zijn daarom vervangen met de big meetings van oud.
