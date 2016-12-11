@@ -32,17 +32,19 @@
 	\end{titlepage}
 
 	% BEGIN PREFACE
+		\pagenumbering{Alph}
 		\input{preface/foreword.tex}
 		
+		\index{Inhoudsopgave}
 		\tableofcontents
 		
 		\input{preface/summary.tex}
 		\input{preface/words.tex}
-		\input{preface/introduction.tex}
 	% END PREFACE
 	
 
 	% BEGIN MAIN
+		\pagenumbering{arabic}
 		\input{chapters/dcentralize.tex}
 		\input{chapters/assignment.tex}
 		% more chapters when needed
@@ -57,8 +59,9 @@
 		\input{chapters/evaluation.tex}
 	% END MAIN
 	
-	% BEGIN APPENDIX
+	% BEGIN 
 		\appendix
+		\pagenumbering{roman}
 		\input{appendix/logbook.tex}
 		\input{appendix/pid.tex}
 		\input{appendix/research.tex}
