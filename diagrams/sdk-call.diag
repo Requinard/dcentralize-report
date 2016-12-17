@@ -1,0 +1,10 @@
+blockdiag {
+ A [label="Extension"]
+ B [label="JS SDK"]
+ C [label="Appsemble SDK"]
+ D [label="Function Handler"]
+
+ A -> B [label='Function Call']
+ B <-> C [label='Iframe RPC Call']
+ C <-> D [label='Find and execute handler']
+}
