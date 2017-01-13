@@ -1,16 +1,35 @@
 \chapter{Samenvatting}
+
 Dit document bevat de beschrijving van de verschillende onderdelen in de appsemble sdk en hoe deze tot stand zijn gekomen. Bij ieder onderdeel is het doel om aan te geven hoe en waarom bepaalde design-keuzes gemaakt zijn. \\
 
-Het product zelf is de appsemble sdk, een hulpmiddel voor het ontwikkelen van extensions voor appsemble. Dit bestaat uit een library voor developers en een backend die functies van de library uitvoert.
+Het product zelf is de Appsemble SDK, een hulpmiddel voor het ontwikkelen van extensions voor appsemble. Dit bestaat uit een library voor developers, een backend die functies van de library uitvoert en een CLI tool om developers te assisteren met ontwikkelen.
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+This document contains a description of the different parts of the appsemble SDK and how they were developed. Every chapter serves to explain how a ecrtain part was developed and why certain choices were made. \\
+
+The producr itself is the Appsemble SDK, a tool for developing extensions for the Appsemble framework. It is composed of a developer library, a backend that executes functions and a CLI tool to assist in development.
 
 \section{Backend}
 
-De backend is het gedeelte van de sdk die alle aanvragen afhandelt. Het zorgt voor de validatie en communicatie tussen developer en appsemble. Deze code zit in appsemble ingebakken en is niet zichtbaar voor developers. 
+De backend is het gedeelte van de sdk die alle aanvragen afhandelt. Het zorgt voor de validatie en communicatie tussen extension en Appsemble. Deze code zit in appsemble ingebakken en is niet zichtbaar voor developers. 
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+The backend is the part of the SDK that handles incoming requests made by an extension. It accomodates validation of incoming data and communication between an extension and Appsemble. This code is put into the appsemble core and thus is not visible for any extension developers.
 
 \section{Libraries}
 
 Developers maken uiteindelijk gebruik van de front-end libraries. Deze verbinden makkelijk te lezen functies met de obscure appsemble sdk interfaces. Het zorgt ervoor dat developers zelf geen api calls uit hoeven te voeren, enkel een functie.
 
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+Those who develop Appsemble extensions will use the Appsemble library for Javascript.  It is a collection that  wraps all internal specifics with a set of standardized functions in order to make sure a developer doesn't have to worry about making API calls by hand.
+
 \section{Developer Tool}
 
 Als laatste zijn er nog een paar taken over die het leven van een developer gemakkelijker maken. Hiervoor is de cli tool. Dit programma automatiseert de complexere taken om ervoor te zorgen dat een developer kan ontwikkelen zonder moeite.
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+Last but not least, there are a few tasks developers will have to execute that can be made easier. For this, the CLI tool has been developed. It is a simple tool that can publish and initialize Appsemble extensions.

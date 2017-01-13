@@ -12,10 +12,36 @@ Hiervoor moet er wel een manier zijn om te interfacen met appsemble. Dit kan ged
 
 Een sdk zorgt ervoor dat alle interne api calls gedaan worden  door middel van functies, in plaats van rauwe api calls. Hiermee kun je gemakkelijk een manier aanbieden om een extension te ontwikkelen. Dit bevordert de bruikbaarheid vna het platform.\\
 
-Hier moeten echter een paar individuele componenten voor ontwikkeld worden. Dit zijn verschillende onderdelen die in verschillende systemen draaien.
+Hier moeten echter een paar individuele componenten voor ontwikkeld worden. Dit zijn verschillende onderdelen die in verschillende systemen draaien. \\
+
 \begin{itemize}
 	\item Back-end api (Accepteert RPC calls)
 	\item Front-end library (Verstuurt RPC calls en wacht op antwoorden)
 	\item Cli tool (Tool om projecten te initialiseren, te bouwen en te uploaden)
 \end{itemize}
 
+Deze onderdelen zijn de roadmap van de applicatie. Dit betekent echter niet dat het gelijk staat aan een afgewerkt product. Echter, voor het afwerken voor de opdracht zal er op zijn minst een werkende basis van deze producten moeten staan. Dit betekent dat het absolute minimum van de applicatie word gezien als het volgende.
+
+\begin{itemize}
+	\item SDK heeft minstens twee verschillende functies
+	\item SDK communiceert met de API en het framework zelf
+	\item De library ondersteund deze twee verschillende functies
+	\item De CLI kan een extensie publiceren
+	\item Deze functionaliteit is uitvoerig getest met behulp van unit tests en integration tests	
+\end{itemize}
+
+Dit zorgt ervoor dat de SDK een goed geteste basis bevat, die werkt als een "proof of concept" van het geheel. Dit is dan gemakkelijk uit te breiden met nieuwe functionaliteit.
+
+\section{Werkwijze stapsgewijs}
+
+Het werk word als volgt afgehandeld.
+
+\begin{enumerate}
+	\item Er word een ticket aangemaakt met een accurate beschrijving van de beoogde functionaliteit
+	\item In het commentaargedeelte en in persoon word er gecommuniceerd over de verschillende implementatiedetails van het werk
+	\item Nadat de discussie is afgerond word het ticket weer bijgewerkt met de implementatiedetails
+	\item Code word geschreven die voldoet aan de eisen van de tickets
+	\item De code word uitvoerig getest en gelint
+	\item De code word gereviewed door een collega
+	\item Indien de code voldoende is van kwaliteit word deze gemerged met de master branch. Indien het niet goed genoeg is word de code herschreven met behulp van het commentaar en word het process herhaald
+\end{enumerate}
