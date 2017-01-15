@@ -28,4 +28,14 @@ Als eerste was de uploader geschreven. Dit was enkel een simpele eenwegsvertalin
 
 Vervolgens is de init geschreven, als een korte proof of concept voor de upload functie. Deze was zeer simpel om te schrijven, sinds het enkel commando-input neemt en hiermee een pakketje opzet. \\
 
-% TODO :Build tool sectie afmaken
+\subsection{Problemen met Serve}
+
+Uiteindelijk was het doel om ook een manier te hebben om een extension te testen in het Appsemble framework zonder enige speciale acties uit te voeren. Hiervoor is het serve commando. \\
+
+De eerste oplossing van dit probleem werkte met een vooraf ingestelde poort, die Appsemble kan bereiken door op een Extension te alt-clicking\footnote{Klikken terwijl de alt toets ingedrukt is}. Hiermee weet Appsemble vervolgens dat een debug-versie geladen moet worden in plaats van het geheel. \\
+
+Dit is echter afgekeurd vanwege het feit dat er te veel vast stond. Een debug-versie moest zijn eigen standaarden kunnen definieeren, waar Appsemble naar zou luisteren.
+
+In versie 2 is er gebruikt gemaakt van een extra veld in de API, waarin de poort gedefineerd word. Dit is afgekeurd vanwege het feit dat er veranderingen in de API kwamen die niet gerelateerd waren. \\
+
+Uiteindelijk is de issue on-hold\footnote{Word niet meer aan gewerkt} gezete tot deze goed geimplementeerd kan worden.

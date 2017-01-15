@@ -2,14 +2,14 @@
 
 Alhoewel het bijzonder leuk is om een complete aanspreekbare API te hebben, is dit niet adequaat als eindproduct. Een gebruiker kan zou de documentatie niet kunnen vinden, heeft geen beschikbare libraries om hiermee te praten of heeft uberhaupt geen zin om met de api te werken. \\
 
-Hiervoor is het handig om een development library te ontwikkelen. Deze library is een plugintool gemaakt om vanuit een appsemble extension te praten met de appsemble api, zonder dat de developer ooit een network request hoeft te doen. De library wrapt alle beschikbare api's i een mooi bestandje met functies, om vervolgens deze aant bieden aan de gebruiker. \\ 
+Hiervoor is het handig om een development library te ontwikkelen. Deze library is een plugintool gemaakt om vanuit een Appsemble extension te praten met de Appsemble api, zonder dat de developer ooit een network request hoeft te doen. De library wrapt alle beschikbare api's i een mooi bestandje met functies, om vervolgens deze aant bieden aan de gebruiker. \\ 
 
 Dit heeft de volgende voordelen.
 
 \begin{itemize}
 	\item De api is te gebruiken zonder documentatie te raadplegen
 	\item Er kan een standaard communicatieprotocol afgesproken worden
-	\item Een developer kan gestopt worden voordat hij/zij iets stoms probeert te doen
+	\item Een developer kan gestopt worden voordat hij/zij iets stoms doet
 \end{itemize}
 
 Er zitten echter wel een paar nadelen aan vast.
@@ -20,11 +20,11 @@ Er zitten echter wel een paar nadelen aan vast.
 	\item Dubbel bijhouden van development, door zowel de backend als de frontend te onderhouden.
 \end{itemize}
 
-Al met al is dit echter wel een heel handig klein projectje die veel tijd kan besparen bij het ontwikkelen van een appsemble extension, wat uiteindelijk het doel is van de sdk. \\
+Al met al is dit echter wel een heel handig klein projectje die veel tijd kan besparen bij het ontwikkelen van een Appsemble extension, wat uiteindelijk het doel is van de SDK. \\
 
 \section{Opzet en Requirements}
 
-De libraries moeten worden gebruikt in de browser. Dit er automatisch enkel gebruikt gemaakt kan worden van javascript en zijn supertypes\footnote{Omdat de browsers enkel javascript en talen die naar javascript compilen ondersteunen en geen andere talen als Java en C\#}. Aangezien de library een wrapper is voor de api, zal deze geen echte complexiteit af te handelen. Dit betekent dat het gebruiken van een grote superset onbegonnen werk is. Om te zorgen dat de library wel up to dat is zal hij geschreven worden  in ES6, de nieuwe versie van javascript die op het moment geimplementeerd word. \\
+De libraries moeten worden gebruikt in de browser. Dit er automatisch enkel gebruikt gemaakt kan worden van javascript en zijn supertypes\footnote{Omdat de browsers enkel javascript en talen die naar javascript compilen ondersteunen en geen andere talen als Java en C\#}. Aangezien de library een wrapper is voor de API, zal deze geen echte complexiteit af te handelen. Dit betekent dat het gebruiken van een grote superset onbegonnen werk is. Om te zorgen dat de library wel up to dat is zal hij geschreven worden  in ES6, de nieuwe versie van javascript die op het moment geimplementeerd word. \\
 
 Na discussie met de collega's op redmine, zijn de volgende requirements opgesteld 	 
 
@@ -37,13 +37,29 @@ Na discussie met de collega's op redmine, zijn de volgende requirements opgestel
 
 Om dit te bewerkstelligen is gekozen voor een simpele opzet, waarbij de library als package word aangemaakt bij npm. De code word geschreven in ES6 en compiled naar ES4/5 voor backwards compatibility. De code word automatisch gelint en getest.
 
-\section{Interactie van library naar api}
+\subsection{Gemaakte keuzes}
 
-Om te zorgen dat de library en de api goed met elkaar kunnen praten moet er een bepaald soort interactie zijn. De library doet dit als volgt. \\
+Uiteindelijk is er gekozen voor het abstracten van API calls naar Promises. Dit betekent dat de asynchrone callbacks van de API logisch afgehandeld worden en simpel zijn om over te redeneren. \\
 
-Op het oppervlak presenteert de library een aantal functies. Deze zitten verpakt in bestanden, genoemd naar het gedeelte van de api die zij aanspreken. In een bestand zit een functie voor iedere api request die er gedaan kan worden, zodat de volle api gebruikt kan worden. \\ 
+Er is echter ook de mogelijkheid om dit niet te doen. De API calls kunnen als simpele functies geimplenteerd worden, waarna een developer zelf zou moeten wachten op antwoord van de server. 
 
-Deze functies formatteren de inkomende data en vertalen dit naar een object dat de api kan begrijpen. Deze word doorgestuurd met de `makeRPC` functie. Deze verbindt de data aan een id, slaat deze op een stuurt de data door. Hij geeft vervolgens een promise terug, die de library dan weer teruggeeft aan de gebruiken. Vanwege het meegestuurde id, kunnen wij bij een antwoord weten welke promise vervuld moet worden. Dit zorgt ervoor dat wij een hele hoop api requests apart in een non-blocking loop apart af kunnen handelen en aparte waardes hiermee terug kunnen geven. \\
+Dit vergt meer moeite aangezien er nu ook documentatie geschreven moet worden over API calls zelf. Dit zijn implementatiedetails die niet nodig zijn voor de eindgebruiker.
+
+\subsection{Bijbehorende documentatie}
+
+Een belangrijk deel van de SDK is dat deze simpel genoeg is om gebruikt te worden voor externe developers. Om dit snel en netjes te maken, is er de keuze gemaakt om een tutorial te schrijven. \\
+
+De tutorial dekt het ontwikkelen van een simpele extension met de SDK en het process van deze publiceren. In het geval van het publiekelijk maken zal de tutorial ook live meegaan. \\
+
+Aangezien de tutorial alle punten van het framework zal aanraken word dit gezien als een goede introductie voor developers die een extension willen schrijven. Deze tutorial wordt toegevoegd als bijlage. \\
+
+\section{Interactie van library naar API}
+
+Om te zorgen dat de library en de API goed met elkaar kunnen praten moet er een bepaald soort interactie zijn. De library doet dit als volgt. \\
+
+Op het oppervlak presenteert de library een aantal functies. Deze zitten verpakt in bestanden, genoemd naar het gedeelte van de API die zij aanspreken. In een bestand zit een functie voor iedere API request die er gedaan kan worden, zodat de volle API gebruikt kan worden. \\ 
+
+Deze functies formatteren de inkomende data en vertalen dit naar een object dat de API kan begrijpen. Deze word doorgestuurd met de `makeRPC` functie. Deze verbindt de data aan een id, slaat deze op een stuurt de data door. Hij geeft vervolgens een promise terug, die de library dan weer teruggeeft aan de gebruiken. Vanwege het meegestuurde id, kunnen wij bij een antwoord weten welke promise vervuld moet worden. Dit zorgt ervoor dat wij een hele hoop API requests apart in een non-blocking loop apart af kunnen handelen en aparte waardes hiermee terug kunnen geven. \\
 
 \section{Voorgekomen problemen}
 

@@ -4,7 +4,7 @@ Appsemble werkt met extensions, individueel ontwikkelde componenten, om een app 
 
 Dit moet echter allemaal weergegeven worden. De ontwikkelaar moet namelijk complete vrijheid hebben om een extension te ontwikkelen met de tools die hij/zij wilt. Dit betekent dat er een geunificeerde oplossing moet zijn voor het laden van extensions. \\ 
 
-In appsemble wordt dit geregeld met iframes. Dit is een html element waarin een nieuwe webpagina geladen word. Ontwikkelaars moeten een extension dan ook eerst registreren bij de appsemble-api. Vanaf dit punt verschijnt het in de lijst met componenten. \\
+In Appsemble wordt dit geregeld met iframes. Dit is een html element waarin een nieuwe webpagina geladen word. Ontwikkelaars moeten een extension dan ook eerst registreren bij de Appsemble-API. Vanaf dit punt verschijnt het in de lijst met componenten. \\
 
 Dit zorgt er echter voor dat een developer arbitrair scripts kan injecteren. Het is dus een security risico om developers te laten doen wat zij willen. Hier komt de sdk langs. \\
 
@@ -12,7 +12,7 @@ De sdk verzorgt een middenlaag tussen de extension en de verschillende services 
 
 \section{Requirements}
 
-Om te zorgen dat er ontwikkeld kan worden voor appsemble moet de backend van de sdk netjes ontwikkeld worden. Na discussie met collega's en de lead developer, zijn de volgende requirements eruit gekomen.
+Om te zorgen dat er ontwikkeld kan worden voor Appsemble moet de backend van de sdk netjes ontwikkeld worden. Na discussie met collega's en de lead developer, zijn de volgende requirements eruit gekomen.
 
 \begin{itemize}
 	\item Kan rpc calls afhandelen
@@ -25,18 +25,37 @@ Om ervoor te zorgen dat er verschillende functies aangeroepen kunnen worden is e
 
 Dit zorgt ervoor dat, indien de goede naam is gebruikt, de correcte functie zal worden uitgevoerd. Bij een functie call word dan ook een payload meegegeven. Dit is de data die een functie nodig uit te voeren. In feite is zijn het de function parameters, maar dan verpakt in een javascript object. \\
 
-Functies in de sdk worden samengevoegd in klassen, met betrekking tot hun doel. Dit zorgt ervoor dat dezelfde api's altijd in dezelfde klassen zitten. \\
+Functies in de sdk worden samengevoegd in klassen, met betrekking tot hun doel. Dit zorgt ervoor dat dezelfde API's altijd in dezelfde klassen zitten. \\
 
 Uiteindelijk worden deze klassen samengevoegd in de sdk, waarbij de sdk aan iedere klasse vraagt welke functies zij aanbieden. Dit word gecombineerd in een groot register, die vervolgens gebruikt wordt voor het aanroepen van zijnde functies. \\
 
-De api's van de sdk kunnen alles wat mogelijk is binnen angular2, zoals het aanroepen van externe api's en het veranderen van de staat van appsemble zelf\footnote{Mits hier een functie voor is}.
+De API's van de sdk kunnen alles wat mogelijk is binnen angular2, zoals het aanroepen van externe API's en het veranderen van de staat van Appsemble zelf\footnote{Mits hier een functie voor is}. \\
 
-\begin{figure}[h]
-	\includegraphics[width=1\textwidth]{diagrams/sdk-call.png}	
-	\caption{\textit{Het schema van een sdk call}}
+\subsection{Andere implementaties}
+
+Voor een simpele versie van de API is overwogen om een hardcoded iets neer te zetten. Dit zou ervoor zorgen dat de API een stuk sneller af zou zijn, ten koste van de onderhouderbaarheid en uitbreidbaarheid. Uiteindelijk is er echter de keuze gemaakt om de API van de grond af uitbreidbaar te schrijven. Dit betekent dat er bijna geen hardcoded stukken code inzitten. \\
+
+De andere optie was om te werken met reflectie voor het maken van een API. Dit is de meest uitbreidbare methode maar vergt echter een stuk meer werk om gedaan te krijgen. Daarom is gekozen voor de meest efficiente qua tijd en complexiteit, waar modules zichzelf registreren bij de SDK om vervolgens aangeroepen te worden.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{../dcentralize-diagrams/seq/sdk-call}
+	\caption{\textit{Sequence Diagram van een SDK call}}
+	\label{fig:sdk-call}
 \end{figure}
+
 \section{Geschreven sdk componenten}
 
 \subsection{Resources}
 
-De resource api biedt de mogelijkheid voor developers om data te lezen en te schrijven. Het word gebackt door de google cloud database. Ontwikkelaars kunnen door middel van resource configurations zelf een tabel aanmaken in deze database. Vervolgens kan met een simpele sdk call hier data naar geschreven worden.
+De resources API biedt de mogelijkheid voor developers om data te lezen en te schrijven. Het word gebackt door de google cloud database. Ontwikkelaars kunnen door middel van resource configurations zelf een tabel aanmaken in deze database. Vervolgens kan met een simpele sdk call hier data naar geschreven worden.
+
+\subsection{Appsemble integratie}
+
+De Appsemble API biedt toegang tot interne functionaliteit van Appsemble. Deze kan worden gebruikt voor bepaalde acties van Appsemble zelf te starten, zoals het navigatie menu openen of toegang aanvragen tot de huidige metadata van de app.
+
+\subsection{Files}
+
+De Files API zorgt voor het werken met bestanden en het lezen van IO streams. Zo kan met de File API bijvoorbeeld een bestand van het systeem geselecteerd worden om in te lezen of kan een foto gemaakt worden. \\
+
+Deze API verzorgt ook functionaliteit om ervoor te zorgen dat alle bestanden die in en uit gaan van hetzelfde formaat zijn\footnote{Appsemble gebruik Blob's in tegenstelling tot een base64-encoded url}. Deze standaard is besloten door het Appsemble team.
