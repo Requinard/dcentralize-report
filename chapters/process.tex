@@ -2,7 +2,7 @@
 
 \section{Code}
 
-Hieronder staat het proess beschreven voor het schrijven en mergen van code. Deze moeten door iedere developer gevolgd worden voordat code gemerged kan worden
+Hieronder staat het proces beschreven voor het schrijven en mergen van code. Deze moeten door iedere developer gevolgd worden voordat code gemerged kan worden
 
 \subsection{Unit Testing en Linting}
 
@@ -15,13 +15,13 @@ Bij d-centralize staat code-kwaliteit voorop. Dit betekent dat, voordat iemand a
 	\item End-To-End integratie tests
 \end{itemize}
 
-Commit message validatie zorgt ervoor dat iedere commit message consistent is. Het dwint regels en formaten af. Hieronder vallen bijvoorbeeld: imperative verbs, formatted first line en width limits. \\
+Commit message validatie zorgt ervoor dat iedere commit message consistent is. Het dwingt regels en een formaat af. Hieronder vallen bijvoorbeeld: imperative verbs, formatted first line en width limits. \\
 
 Vervolgens word een stukje code gelint. Dit betekent dat de code statisch gecheckt word voor fouten in codeerstijl. Dit zorgt ervoor dat de code altijd hetzelfde uitziet en leest. \\
 
 Dit word geholpen door EditorConfig, een speciale plugin die zorgt dat je editor standaard aan alle regels voldoet. \\
 
-Dan word de code echt getest. Als eerste zijn de unit tests aan de beurt. Deze tests, geschreven met karma, verifieren dat de code zelf werkt. Externe klasses worden gemockt om modulariteit echt te checken. \\
+Dan word de code echt getest. Als eerste zijn de unit tests aan de beurt. Deze tests, geschreven met karma, verifieren dat de code zelf werkt. Externe klassen worden gemockt\footnote{Zelfde als stubben, een nep object maken} om modulariteit echt te checken. \\
 
 Om te zorgen dat de unit tests wel ergens voor gebruikt worden, word 100 procent coveage afgedwongen. Dit gaat over alle domeinen, waardoor dus oom anonieme functies getest moeten worden. \\
 
@@ -29,7 +29,7 @@ Als laatste word de ui en integratie getest. Dit gebeurt met de hulp van protrac
 
 \subsection{Jenkins}
 
-Jenkins is de automated build server. Zodra er een commit gepushed word naar Gerrit, zal jenkins proberen deze te bouwen en de tests uit te voeren. \\
+Jenkins is de geautomatiseerde build server. Zodra er een commit gepushed word naar Gerrit, zal jenkins proberen deze te bouwen en de tests uit te voeren. \\
 
 Jenkins geeft vervolgens aan of de build succcessvol was of niet. Dit geeft aan of alle stappen van het vorige hoofdstuk goed zijn doorlopen. \\
 

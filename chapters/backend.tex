@@ -1,39 +1,39 @@
 \chapter{Backend SDK}
 
-Appsemble werkt met extensions, individueel ontwikkelde componenten, om een app te maken. Extensions worden ontwikkeld door d-centralize zelf, en hopelijk in de toekomst door externe ontwikkelaars buiten het bedrijf. \\
+Appsemble werkt met extensions, individueel ontwikkelde componenten, om een app te maken. Extensions worden ontwikkeld door d-centralize zelf en hopelijk in de toekomst door externe ontwikkelaars buiten het bedrijf. \\
 
-Dit moet echter allemaal weergegeven worden. De ontwikkelaar moet namelijk complete vrijheid hebben om een extension te ontwikkelen met de tools die hij/zij wilt. Dit betekent dat er een geunificeerde oplossing moet zijn voor het laden van extensions. \\ 
+Dit moet echter allemaal weergegeven worden. De ontwikkelaar moet namelijk complete vrijheid hebben om een extension te ontwikkelen met de tools die hij/zij wilt. Dit betekent dat er een ge{\"u}nificeerde oplossing moet zijn voor het laden van extensions. \\ 
 
-In Appsemble wordt dit geregeld met iframes. Dit is een html element waarin een nieuwe webpagina geladen word. Ontwikkelaars moeten een extension dan ook eerst registreren bij de Appsemble-API. Vanaf dit punt verschijnt het in de lijst met componenten. \\
+In Appsemble wordt dit geregeld met iframes. Dit is een html element waarin een nieuwe webpagina geladen word. Ontwikkelaars moeten een extension dan ook eerst registreren bij de Appsemble API. Vanaf dit punt verschijnt het in de lijst met componenten. \\
 
-Dit zorgt er echter voor dat een developer arbitrair scripts kan injecteren. Het is dus een security risico om developers te laten doen wat zij willen. Hier komt de sdk langs. \\
+Dit zorgt er echter voor dat een developer arbitrair scripts kan injecteren. Het is dus een veiligheidsrisico om developers te laten doen wat zij willen. Hier komt de SDK langs. \\
 
-De sdk verzorgt een middenlaag tussen de extension en de verschillende services die zij willen gebruiken.Dit zorgt ervoor dat de extensions zelf goed beschermd zijn tegen boosdoeners, znder dat er verminderde functionaliteit is.
+De SDK verzorgt een middenlaag tussen de extension en de verschillende services die zij willen gebruiken.Dit zorgt ervoor dat de extensions zelf goed beschermd zijn tegen boosdoeners, zonder dat er verminderde functionaliteit is.
 
 \section{Requirements}
 
-Om te zorgen dat er ontwikkeld kan worden voor Appsemble moet de backend van de sdk netjes ontwikkeld worden. Na discussie met collega's en de lead developer, zijn de volgende requirements eruit gekomen.
+Om te zorgen dat er ontwikkeld kan worden voor Appsemble moet de backend van de SDK netjes ontwikkeld worden. Na discussie met collega's en de hoofddeveloper, zijn de volgende requirements eruit gekomen.
 
 \begin{itemize}
-	\item Kan rpc calls afhandelen
+	\item Kan API calls afhandelen
 	\item Werkt met promises
 	\item Kan specifieke functies aanroepen
 	\item Is makkelijk uit te breiden
 \end{itemize}
 
-Om ervoor te zorgen dat er verschillende functies aangeroepen kunnen worden is er gebruikt gemaakt van een call-register. Dit is een dictionairy die een naam verbind aan een functie\footnote{In javascript zijn functies first-class citizen's en kunnen dus doorgegeven worden aan andere functies}. \\
+Om ervoor te zorgen dat er verschillende functies aangeroepen kunnen worden is er gebruikt gemaakt van een call-register. Dit is een map die een naam verbind aan een functie\footnote{In javascript zijn functies first-class citizen's en kunnen dus doorgegeven worden aan andere functies}\cite{stack1}. \\
 
-Dit zorgt ervoor dat, indien de goede naam is gebruikt, de correcte functie zal worden uitgevoerd. Bij een functie call word dan ook een payload meegegeven. Dit is de data die een functie nodig uit te voeren. In feite is zijn het de function parameters, maar dan verpakt in een javascript object. \\
+Dit zorgt ervoor dat, indien de goede naam is gebruikt, de correcte functie zal worden uitgevoerd. Bij een functie call word dan ook een payload meegegeven. Dit is de data die een functie nodig uit te voeren. In feite is zijn het de functieparameters, maar dan verpakt in een javascript object. \\
 
-Functies in de sdk worden samengevoegd in klassen, met betrekking tot hun doel. Dit zorgt ervoor dat dezelfde API's altijd in dezelfde klassen zitten. \\
+Functies in de SDK worden samengevoegd in klassen, met betrekking tot hun doel. Dit zorgt ervoor dat dezelfde API's altijd in dezelfde klassen zitten. \\
 
-Uiteindelijk worden deze klassen samengevoegd in de sdk, waarbij de sdk aan iedere klasse vraagt welke functies zij aanbieden. Dit word gecombineerd in een groot register, die vervolgens gebruikt wordt voor het aanroepen van zijnde functies. \\
+Uiteindelijk worden deze klassen samengevoegd in de SDK, waarbij de SDK aan iedere klasse vraagt welke functies zij aanbieden. Dit word gecombineerd in een groot register, die vervolgens gebruikt wordt voor het aanroepen van zijnde functies. \\
 
-De API's van de sdk kunnen alles wat mogelijk is binnen angular2, zoals het aanroepen van externe API's en het veranderen van de staat van Appsemble zelf\footnote{Mits hier een functie voor is}. \\
+De API's van de SDK kunnen alles wat mogelijk is binnen angular2, zoals het aanroepen van externe API's en het veranderen van de staat van Appsemble zelf\footnote{Mits hier een functie voor is}. \\
 
 \subsection{Andere implementaties}
 
-Voor een simpele versie van de API is overwogen om een hardcoded iets neer te zetten. Dit zou ervoor zorgen dat de API een stuk sneller af zou zijn, ten koste van de onderhouderbaarheid en uitbreidbaarheid. Uiteindelijk is er echter de keuze gemaakt om de API van de grond af uitbreidbaar te schrijven. Dit betekent dat er bijna geen hardcoded stukken code inzitten. \\
+Voor een simpele versie van de API is overwogen om een vastgeprogrammeerd iets neer te zetten. Dit zou ervoor zorgen dat de API een stuk sneller af zou zijn, ten koste van de onderhoudbaarheid en uitbreidbaarheid. Uiteindelijk is er echter de keuze gemaakt om de API van de grond af uitbreidbaar te schrijven. Dit betekent dat er bijna geen vastgeprogrammeerde stukken code inzitten. \\
 
 De andere optie was om te werken met reflectie voor het maken van een API. Dit is de meest uitbreidbare methode maar vergt echter een stuk meer werk om gedaan te krijgen. Daarom is gekozen voor de meest efficiente qua tijd en complexiteit, waar modules zichzelf registreren bij de SDK om vervolgens aangeroepen te worden.
 
@@ -41,14 +41,14 @@ De andere optie was om te werken met reflectie voor het maken van een API. Dit i
 	\centering
 	\includegraphics[width=\linewidth]{../dcentralize-diagrams/seq/sdk-call}
 	\caption{\textit{Sequence Diagram van een SDK call}}
-	\label{fig:sdk-call}
+	\label{fig:SDK-call}
 \end{figure}
 
-\section{Geschreven sdk componenten}
+\section{Geschreven SDK componenten}
 
 \subsection{Resources}
 
-De resources API biedt de mogelijkheid voor developers om data te lezen en te schrijven. Het word gebackt door de google cloud database. Ontwikkelaars kunnen door middel van resource configurations zelf een tabel aanmaken in deze database. Vervolgens kan met een simpele sdk call hier data naar geschreven worden.
+De resources API biedt de mogelijkheid voor developers om data te lezen en te schrijven. Het word gebackt door de google cloud database. Ontwikkelaars kunnen door middel van resource configurations zelf een tabel aanmaken in deze database. Vervolgens kan met een simpele SDK call hier data naar geschreven worden.
 
 \subsection{Appsemble integratie}
 

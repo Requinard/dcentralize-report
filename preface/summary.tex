@@ -1,26 +1,26 @@
 \chapter{Samenvatting}
 
-Dit document bevat de beschrijving van de verschillende onderdelen in de appsemble sdk en hoe deze tot stand zijn gekomen. Bij ieder onderdeel is het doel om aan te geven hoe en waarom bepaalde design-keuzes gemaakt zijn. \\
+Dit document bevat de beschrijving van de verschillende onderdelen in de Appsemble SDK en hoe deze tot stand zijn gekomen. Bij ieder onderdeel is het doel om aan te geven hoe en waarom bepaalde design-keuzes gemaakt zijn. \\
 
-Het product zelf is de Appsemble SDK, een hulpmiddel voor het ontwikkelen van extensions voor appsemble. Dit bestaat uit een library voor developers, een backend die functies van de library uitvoert en een CLI tool om developers te assisteren met ontwikkelen.
+Het product zelf is de Appsemble SDK, een hulpmiddel voor het ontwikkelen van extensions voor Appsemble. Dit bestaat uit een library voor developers, een backend die functies van de library uitvoert en een CLI tool om developers te assisteren met ontwikkelen.
 
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 
-This document contains a description of the different parts of the appsemble SDK and how they were developed. Every chapter serves to explain how a ecrtain part was developed and why certain choices were made. \\
+This document contains a description of the different parts of the Appsemble SDK and how they were developed. Every chapter serves to explain how a ecrtain part was developed and why certain choices were made. \\
 
 The producr itself is the Appsemble SDK, a tool for developing extensions for the Appsemble framework. It is composed of a developer library, a backend that executes functions and a CLI tool to assist in development.
 
 \section{Backend}
 
-De backend is het gedeelte van de sdk die alle aanvragen afhandelt. Het zorgt voor de validatie en communicatie tussen extension en Appsemble. Deze code zit in appsemble ingebakken en is niet zichtbaar voor developers. 
+De backend is het gedeelte van de SDK die alle aanvragen afhandelt. Het zorgt voor de validatie en communicatie tussen extension en Appsemble. Deze code zit in Appsemble ingebakken en is niet zichtbaar voor developers. 
 
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 
-The backend is the part of the SDK that handles incoming requests made by an extension. It accomodates validation of incoming data and communication between an extension and Appsemble. This code is put into the appsemble core and thus is not visible for any extension developers.
+The backend is the part of the SDK that handles incoming requests made by an extension. It accomodates validation of incoming data and communication between an extension and Appsemble. This code is put into the Appsemble core and thus is not visible for any extension developers.
 
 \section{Libraries}
 
-Developers maken uiteindelijk gebruik van de front-end libraries. Deze verbinden makkelijk te lezen functies met de obscure appsemble sdk interfaces. Het zorgt ervoor dat developers zelf geen api calls uit hoeven te voeren, enkel een functie.
+Developers maken uiteindelijk gebruik van de front-end libraries. Deze verbinden makkelijk te lezen functies met de obscure Appsemble SDK interfaces. Het zorgt ervoor dat developers zelf geen API calls uit hoeven te voeren, enkel een functie.
 
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 

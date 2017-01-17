@@ -1,13 +1,13 @@
 \chapter{Developer Libraries}
 
-Alhoewel het bijzonder leuk is om een complete aanspreekbare API te hebben, is dit niet adequaat als eindproduct. Een gebruiker kan zou de documentatie niet kunnen vinden, heeft geen beschikbare libraries om hiermee te praten of heeft uberhaupt geen zin om met de api te werken. \\
+Alhoewel het bijzonder leuk is om een complete aanspreekbare API te hebben, is dit niet adequaat als eindproduct. Een gebruiker kan zou de documentatie niet kunnen vinden, heeft geen beschikbare libraries om hiermee te praten of heeft uberhaupt geen zin om met de API te werken. \\
 
-Hiervoor is het handig om een development library te ontwikkelen. Deze library is een plugintool gemaakt om vanuit een Appsemble extension te praten met de Appsemble api, zonder dat de developer ooit een network request hoeft te doen. De library wrapt alle beschikbare api's i een mooi bestandje met functies, om vervolgens deze aant bieden aan de gebruiker. \\ 
+Hiervoor is het handig om een development library te ontwikkelen. Deze library is een plugin gemaakt om vanuit een Appsemble extension te praten met de Appsemble API, zonder dat de developer een network request hoeft te doen. De library verstopt alle beschikbare API's in een mooi bestandje met functies, om vervolgens deze aan te bieden aan de gebruiker. \\ 
 
 Dit heeft de volgende voordelen.
 
 \begin{itemize}
-	\item De api is te gebruiken zonder documentatie te raadplegen
+	\item De API is te gebruiken zonder documentatie te raadplegen
 	\item Er kan een standaard communicatieprotocol afgesproken worden
 	\item Een developer kan gestopt worden voordat hij/zij iets stoms doet
 \end{itemize}
@@ -24,7 +24,7 @@ Al met al is dit echter wel een heel handig klein projectje die veel tijd kan be
 
 \section{Opzet en Requirements}
 
-De libraries moeten worden gebruikt in de browser. Dit er automatisch enkel gebruikt gemaakt kan worden van javascript en zijn supertypes\footnote{Omdat de browsers enkel javascript en talen die naar javascript compilen ondersteunen en geen andere talen als Java en C\#}. Aangezien de library een wrapper is voor de API, zal deze geen echte complexiteit af te handelen. Dit betekent dat het gebruiken van een grote superset onbegonnen werk is. Om te zorgen dat de library wel up to dat is zal hij geschreven worden  in ES6, de nieuwe versie van javascript die op het moment geimplementeerd word. \\
+De libraries moeten worden gebruikt in de browser. Dit er automatisch enkel gebruikt gemaakt kan worden van javascript en zijn supertypes\footnote{Omdat de browsers enkel javascript en talen die naar javascript compileren ondersteunen en geen andere talen als Java en C\#}. Aangezien de library een wrapper is voor de API, zal deze geen echte complexiteit af te handelen. Dit betekent dat het gebruiken van een grote superset onbegonnen werk is. Om te zorgen dat de library wel up to dat is zal hij geschreven worden  in ES6, de nieuwe versie van javascript die op het moment geimplementeerd word. \\
 
 Na discussie met de collega's op redmine, zijn de volgende requirements opgesteld 	 
 
@@ -35,13 +35,13 @@ Na discussie met de collega's op redmine, zijn de volgende requirements opgestel
 	\item Verspreid de library via npm
 \end{itemize}
 
-Om dit te bewerkstelligen is gekozen voor een simpele opzet, waarbij de library als package word aangemaakt bij npm. De code word geschreven in ES6 en compiled naar ES4/5 voor backwards compatibility. De code word automatisch gelint en getest.
+Om dit te bewerkstelligen is gekozen voor een simpele opzet, waarbij de library als package word aangemaakt bij npm. De code word geschreven in ES6 en gecompileerd naar ES4/5 voor backwards compatibility. De code word automatisch gelint en getest.
 
 \subsection{Gemaakte keuzes}
 
-Uiteindelijk is er gekozen voor het abstracten van API calls naar Promises. Dit betekent dat de asynchrone callbacks van de API logisch afgehandeld worden en simpel zijn om over te redeneren. \\
+Uiteindelijk is er gekozen voor het verstoppen van de API in Promises. Dit betekent dat de asynchrone callbacks van de API logisch afgehandeld worden en simpel zijn om over te redeneren. \\
 
-Er is echter ook de mogelijkheid om dit niet te doen. De API calls kunnen als simpele functies geimplenteerd worden, waarna een developer zelf zou moeten wachten op antwoord van de server. 
+Er is echter ook de mogelijkheid om dit niet te doen. De API calls kunnen als simpele functies ge{\"i}mplementeerd worden, waarna een developer zelf zou moeten wachten op antwoord van de server. 
 
 Dit vergt meer moeite aangezien er nu ook documentatie geschreven moet worden over API calls zelf. Dit zijn implementatiedetails die niet nodig zijn voor de eindgebruiker.
 
@@ -49,7 +49,7 @@ Dit vergt meer moeite aangezien er nu ook documentatie geschreven moet worden ov
 
 Een belangrijk deel van de SDK is dat deze simpel genoeg is om gebruikt te worden voor externe developers. Om dit snel en netjes te maken, is er de keuze gemaakt om een tutorial te schrijven. \\
 
-De tutorial dekt het ontwikkelen van een simpele extension met de SDK en het process van deze publiceren. In het geval van het publiekelijk maken zal de tutorial ook live meegaan. \\
+De tutorial dekt het ontwikkelen van een simpele extension met de SDK en het proces van deze publiceren. In het geval van het publiekelijk maken zal de tutorial ook live meegaan. \\
 
 Aangezien de tutorial alle punten van het framework zal aanraken word dit gezien als een goede introductie voor developers die een extension willen schrijven. Deze tutorial wordt toegevoegd als bijlage. \\
 

@@ -4,4 +4,12 @@
 d~centralize.
 \newblock d-centralize projects.
 
+\bibitem[team, ]{angular1}
+team, A.
+\newblock Migrating from angular1 to angular2.
+
+\bibitem[Versluys, ]{stack1}
+Versluys, S.
+\newblock What is meant by first class objects?
+
 \end{thebibliography}

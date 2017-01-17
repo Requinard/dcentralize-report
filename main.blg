@@ -5,46 +5,52 @@ The style file: apalike.bst
 Database file #1: appendix/bibliography.bib
 Warning--entry type for "dcent1" isn't style-file defined
 --line 7 of file appendix/bibliography.bib
+Warning--entry type for "angular1" isn't style-file defined
+--line 14 of file appendix/bibliography.bib
+Warning--entry type for "stack1" isn't style-file defined
+--line 21 of file appendix/bibliography.bib
 Warning--empty year in dcent1
-You've used 1 entry,
+Warning--empty year in angular1
+Warning--empty year in stack1
+You've used 3 entries,
             1935 wiz_defined-function locations,
-            474 strings with 3720 characters,
-and the built_in function-call counts, 251 in all, are:
-= -- 24
-> -- 7
-< -- 1
-+ -- 2
-- -- 2
-* -- 13
-:= -- 53
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 6
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 10
-empty$ -- 16
-format.name$ -- 3
-if$ -- 44
+            480 strings with 3833 characters,
+and the built_in function-call counts, 719 in all, are:
+= -- 72
+> -- 21
+< -- 3
++ -- 6
+- -- 6
+* -- 39
+:= -- 145
+add.period$ -- 6
+call.type$ -- 3
+change.case$ -- 18
+chr.to.int$ -- 3
+cite$ -- 6
+duplicate$ -- 30
+empty$ -- 46
+format.name$ -- 9
+if$ -- 130
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 7
-num.names$ -- 3
-pop$ -- 6
+newline$ -- 15
+num.names$ -- 9
+pop$ -- 18
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 18
 quote$ -- 0
-skip$ -- 8
+skip$ -- 22
 stack$ -- 0
-substring$ -- 12
+substring$ -- 36
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 6
-warning$ -- 1
-while$ -- 2
+type$ -- 18
+warning$ -- 3
+while$ -- 6
 width$ -- 0
-write$ -- 11
-(There were 2 warnings)
+write$ -- 29
+(There were 6 warnings)
